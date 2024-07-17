@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct LaunchView: View {
-    @State private var isActive: Bool = false
-    @State private var size = 0.8
-    @State private var opacity = 0.5
+//    @State private var isActive: Bool = false
+//    @State private var size = 0.8
+//    @State private var opacity = 0.5
     
     var body: some View {
         VStack {
             ZStack {
-                Image("rickAndmortyBackground")
+                Image("rickAndMortyBackground")
                     .resizable()
                     .ignoresSafeArea()
                 Image("rickAndMortyLogo")
