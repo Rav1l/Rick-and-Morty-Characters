@@ -14,13 +14,29 @@ struct CharactersView: View {
     
     var body: some View {
         ScrollView {
-            ForEach(vm.allCharacters) { character in
-                CharacterRowView(character: character)
+            LazyVStack {
+                ForEach(vm.allCharacters) { character in
+                    NavigationLink(value: character) {
+                        CharacterRowView(character: character)
+                            .onAppear {
+                                if character.id == vm.allCharacters.last?.id {
+                                    
+                                    vm.loadData()
+                                }
+                            }
+                    }
+                    .padding(.bottom, -3)
+                }
+                loadingIndicator
             }
         }
+        .scrollBounceBehavior(.basedOnSize)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { titel }
         .toolbarRole(.navigationStack)
+        .navigationDestination(for: CharacterModel.self) { character in
+            DetailView(character: character)
+        }
     }
 }
 
@@ -37,10 +53,15 @@ extension CharactersView {
     private var titel: some ToolbarContent {
         ToolbarItem(placement: .principal) {
             Text("Rick & Morty Characters")
-                .font(.system(size: 24))
+                .font(.title)
                 .fontWeight(.bold)
                 .padding(.bottom, 20)
         }
     }
     
+    private var loadingIndicator: some View {
+        ProgressView()
+            .scaleEffect(2)
+            .padding(.top, 12)
+    }
 }

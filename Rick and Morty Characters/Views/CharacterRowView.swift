@@ -17,9 +17,9 @@ struct CharacterRowView: View {
             information
             Spacer()
         }
-        .frame(height: 96)
+        .frame(height: 90)
         .background(Color.theme.rowBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 15))
+        .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding([.leading, .trailing], 10)
     }
 }
@@ -48,30 +48,21 @@ extension CharacterRowView {
         VStack(alignment:.leading, spacing: 7) {
             ///Character's name
             Text(character.name)
-                .font(.system(size: 18))
+                .font(.title3)
                 .fontWeight(.semibold)
+                .lineLimit(1)
             ///Character's status
             HStack(spacing: 3) {
                 Text(character.status.rawValue)
-                    .foregroundStyle(statusTextColor)
+                    .foregroundStyle(Color.theme.statusTextColor(character: character))
                 Text("• " + character.species)
             }
-            .font(.system(size: 12))
+            .font(.caption)
             .fontWeight(.semibold)
             ///Character's gender
             Text(character.gender.rawValue)
-                .font(.system(size: 12))
+                .font(.caption)
         }
-    }
-    ///Color of character's status text
-    private var statusTextColor: Color {
-        switch character.status {
-        case .alive:
-            Color.theme.green
-        case .dead:
-            Color.theme.red
-        case .unknown:
-            Color.theme.grey
-        }
+        .foregroundStyle(Color.theme.text)
     }
 }

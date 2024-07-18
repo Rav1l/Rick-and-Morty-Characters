@@ -6,24 +6,45 @@
 //
 
 import Foundation
-import Combine
 
-class CharacterViewModel: ObservableObject {
+final class CharacterViewModel: ObservableObject {
     
     @Published var allCharacters: [CharacterModel] = []
+    @Published var canLoadNextPage = true
+    @Published var isFinished = false
+    @Published var error: Error?
     
-    private let dataService = CharactersDataService()
-    private var cancellables = Set<AnyCancellable>()
+    private var currentPage = 1
     
     init() {
-        addSubscribers()
+        loadData()
+    }
+    @MainActor
+    private func fetchData() async throws {
+        do {
+            guard let url = Request(resource: .character, queryParameters: [URLQueryItem(name: "page", value: String(currentPage))]).url,
+            canLoadNextPage == true else {
+                throw NetworkingError.invalidURL
+            }
+            canLoadNextPage = false
+            let (data, response) = try await URLSession.shared.data(from: url)
+            guard let response = response as? HTTPURLResponse,
+                  response.statusCode >= 200 && response.statusCode < 300 else { throw NetworkingError.serverError }
+            guard let returnedResult = try? JSONDecoder().decode(Characters.self, from: data) else { throw NetworkingError.invalidData }
+            isFinished = returnedResult.info.next == nil
+            self.currentPage += 1
+            self.allCharacters.append(contentsOf: returnedResult.results)
+            canLoadNextPage = !isFinished
+        } catch {
+            self.error = error
+        }
     }
     
-    func addSubscribers() {
-        dataService.$allCharacters
-            .sink { [weak self] returnedCharacters in
-                self?.allCharacters = returnedCharacters
-            }
-            .store(in: &cancellables)
+    
+    func loadData() {
+        Task {
+            try await fetchData()
+        }
     }
 }
+

@@ -12,7 +12,8 @@ struct Characters: Codable {
     let results: [CharacterModel]
 }
 
-struct CharacterModel: Codable, Identifiable {
+struct CharacterModel: Codable, Identifiable, Hashable {
+    
     let id: Int
     let name: String
     let status: Status
@@ -23,20 +24,43 @@ struct CharacterModel: Codable, Identifiable {
     let episode: [String]
     let url: String
     let created: String
+    
+    static func == (lhs: CharacterModel, rhs: CharacterModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+        hasher.combine(self.name)
+        hasher.combine(self.species)
+        hasher.combine(self.gender)
+        hasher.combine(self.origin)
+        hasher.combine(self.location)
+        hasher.combine(self.image)
+        hasher.combine(self.episode)
+        hasher.combine(self.url)
+        hasher.combine(self.created)
+    }
+    
 }
 
-struct Location: Codable {
+struct Location: Codable, Hashable {
     let name: String
     let url: String
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(url)
+    }
 }
 
-enum Status: String, Codable {
+@frozen enum Status: String, Codable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"
 }
 
-enum Gender: String, Codable {
+@frozen enum Gender: String, Codable {
     case female = "Female"
     case male = "Male"
     case genderless = "Genderless"

@@ -10,6 +10,7 @@ import SwiftUI
 
 extension Color {
     static let theme = ColorTheme()
+    
 }
 
 struct ColorTheme {
@@ -20,4 +21,16 @@ struct ColorTheme {
     let grey = Color("UnknownStatusColor")
     let rowBackground = Color("RowBackgroundColor")
     let text = Color("TextColor")
+    
+    ///Color of character's status text
+    func statusTextColor(character: CharacterModel) -> Color {
+        switch character.status {
+        case .alive:
+            return  Color.theme.green
+        case .dead:
+            return  Color.theme.red
+        case .unknown:
+            return Color.theme.grey
+        }
+    }
 }
