@@ -122,15 +122,18 @@ extension DetailView {
     
     ///Information about character
     private var info: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(try! AttributedString(
-                markdown: "**Specise:** \(character.species)"))
-            Text(try! AttributedString(
-                markdown: "**Gender:** \(character.gender.rawValue)"))
-            Text(try! AttributedString(
-                markdown: "**Eposides:** \(episodesNames)"))
-            Text(try! AttributedString(
-                markdown: "**Last known location:** \(character.location.name)"))
+        HStack {
+            VStack(alignment: .leading, spacing: 10) {
+                Text(try! AttributedString(
+                    markdown: "**Specise:** \(character.species)"))
+                Text(try! AttributedString(
+                    markdown: "**Gender:** \(character.gender.rawValue)"))
+                Text(try! AttributedString(
+                    markdown: "**Eposides:** \(episodesNames)"))
+                Text(try! AttributedString(
+                    markdown: "**Last known location:** \(character.location.name)"))
+            }
+            Spacer()
         }
     }
 }
