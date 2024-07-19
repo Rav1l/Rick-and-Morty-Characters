@@ -10,32 +10,25 @@ import SwiftUI
 ///Main view
 struct CharactersView: View {
     
-    @EnvironmentObject private var vm: CharacterViewModel
+    @EnvironmentObject private var characterVM: CharacterViewModel
+    @EnvironmentObject private var networkMonitor: NetworkMonitor
     
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(vm.allCharacters) { character in
-                    NavigationLink(value: character) {
-                        CharacterRowView(character: character)
-                            .onAppear {
-                                if character.id == vm.allCharacters.last?.id {
-                                    
-                                    vm.loadData()
-                                }
-                            }
-                    }
-                    .padding(.bottom, -3)
+        if networkMonitor.isConnected {
+            ScrollView {
+                LazyVStack {
+                        rowsAllCharacters
                 }
-                loadingIndicator
             }
-        }
-        .scrollBounceBehavior(.basedOnSize)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar { titel }
-        .toolbarRole(.navigationStack)
-        .navigationDestination(for: CharacterModel.self) { character in
-            DetailView(character: character)
+            .scrollBounceBehavior(.basedOnSize)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar { titel }
+            .toolbarRole(.navigationStack)
+            .navigationDestination(for: CharacterModel.self) { character in
+                DetailView(character: character)
+            }
+        }  else {
+            NetworkErrorView()
         }
     }
 }
@@ -46,6 +39,7 @@ struct CharactersView: View {
             .preferredColorScheme(.dark)
     }
     .environmentObject(DeveloperPreview.instance.characterVM)
+    .environmentObject(NetworkMonitor())
 }
 
 extension CharactersView {
@@ -58,10 +52,30 @@ extension CharactersView {
                 .padding(.bottom, 20)
         }
     }
-    
+    ///ProgressView loading circular indiactor
     private var loadingIndicator: some View {
         ProgressView()
             .scaleEffect(2)
             .padding(.top, 12)
     }
+    
+    private var rowsAllCharacters: some View {
+        ForEach(characterVM.allCharacters) { character in
+            NavigationLink(value: character) {
+                CharacterRowView(character: character)
+                ///Pagination list
+                    .onAppear {
+                        if character.id == characterVM.allCharacters.last?.id {
+                            characterVM.loadData()
+                        }
+                    }
+            }
+            .padding(.bottom, -3)
+            ///Hardcode loading indicator view
+            if character == characterVM.allCharacters.last && character.id != 826 {
+                loadingIndicator
+            }
+        }
+    }
 }
+

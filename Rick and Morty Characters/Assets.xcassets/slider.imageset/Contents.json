@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "custom.slider.horizontal.2.square@5x.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

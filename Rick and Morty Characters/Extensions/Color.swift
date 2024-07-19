@@ -21,7 +21,7 @@ struct ColorTheme {
     let grey = Color("UnknownStatusColor")
     let rowBackground = Color("RowBackgroundColor")
     let text = Color("TextColor")
-    
+    let secondGrey = Color("StrokeColor")
     ///Color of character's status text
     func statusTextColor(character: CharacterModel) -> Color {
         switch character.status {

@@ -8,11 +8,14 @@
 import Foundation
 import SwiftUI
 
+///Used for norma work Preview .
 class DeveloperPreview {
     static let instance = DeveloperPreview()
     private init() { }
     
     let characterVM = CharacterViewModel()
+    let filterVM = FilterViewModel()
+    
     
     let character = CharacterModel(
         id: 1,

@@ -10,16 +10,19 @@ import SwiftUI
 @main
 struct RickAndMortyCharactersApp: App {
     
-    @StateObject private var vm = CharacterViewModel()
+    @StateObject private var characterVM = CharacterViewModel()
+    @StateObject private var networkMonitor = NetworkMonitor()
     
     var body: some Scene {
         WindowGroup {
             NavigationStack {
                 CharactersView()
-                ///dark theme for the app
+                ///Forced dark theme for the app
                     .preferredColorScheme(.dark)
             }
-            .environmentObject(vm)
+            .environmentObject(characterVM)
+            .environmentObject(networkMonitor)
+            
         }
     }
 }

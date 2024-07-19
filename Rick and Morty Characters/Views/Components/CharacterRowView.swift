@@ -15,6 +15,7 @@ struct CharacterRowView: View {
         HStack {
             image
             information
+                .padding(10)
             Spacer()
         }
         .frame(height: 90)
@@ -32,16 +33,11 @@ struct CharacterRowView: View {
 extension CharacterRowView {
     ///Async download and setting image
     private var image: some View {
-        AsyncImage(url: URL(string: character.image), content: { image in
-            image.resizable()
-        }, placeholder: {
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
-        })
+        CharacterImageView(character: character)
         .scaledToFill()
         .frame(width: 84, height: 64)
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .padding(.leading, 10)
+        .padding(.leading, 15)
     }
     ///Information about character
     private var information: some View {
