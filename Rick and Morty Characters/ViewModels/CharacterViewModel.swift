@@ -10,12 +10,11 @@ import Foundation
 final class CharacterViewModel: ObservableObject {
     
     @Published var allCharacters: [CharacterModel] = []
-    @Published var canLoadNextPage: Bool = true
-    @Published var isFinished: Bool = false
     @Published var error: Error?
     
     private let baseURL = "https://rickandmortyapi.com/api/character/?page="
     private var currentPage = 1
+    private var pages = 1
     
     init() {
         loadData()
@@ -25,9 +24,8 @@ final class CharacterViewModel: ObservableObject {
     private func fetchData() async throws {
         do {
             guard let url = URL(string: baseURL + String(currentPage)),
-                  canLoadNextPage == true else { throw NetworkingError.invalidURL }
+                  self.currentPage <= self.pages else { throw NetworkingError.invalidURL }
             
-            canLoadNextPage = false
             let (data, response) = try await URLSession.shared.data(from: url)
             
             guard let response = response as? HTTPURLResponse,
@@ -35,10 +33,9 @@ final class CharacterViewModel: ObservableObject {
             
             guard let returnedResult = try? JSONDecoder().decode(Characters.self, from: data) else { throw NetworkingError.invalidData }
             
-            isFinished = returnedResult.info.next == nil
-            self.currentPage += 1
+            self.pages = returnedResult.info.pages
+            self.currentPage = self.currentPage <= returnedResult.info.pages ? (self.currentPage + 1) : 1
             self.allCharacters.append(contentsOf: returnedResult.results)
-            canLoadNextPage = !isFinished
         } catch {
             self.error = error
         }

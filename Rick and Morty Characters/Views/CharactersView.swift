@@ -12,14 +12,23 @@ struct CharactersView: View {
     
     @EnvironmentObject private var characterVM: CharacterViewModel
     @EnvironmentObject private var networkMonitor: NetworkMonitor
+    @EnvironmentObject private var filterVM: FilterViewModel
     
     var body: some View {
         if networkMonitor.isConnected {
             ScrollView {
+                FilterBarView(searchText: $filterVM.searchText)
                 LazyVStack {
+                    if filterVM.searchText.isEmpty {
                         rowsAllCharacters
+                    } else {
+                        rowsFilterCharacters
+                    }
                 }
             }
+            .onChange(of: filterVM.searchText, { oldValue, newValue in
+                    filterVM.loadData()
+            })
             .scrollBounceBehavior(.basedOnSize)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { titel }
@@ -40,6 +49,7 @@ struct CharactersView: View {
     }
     .environmentObject(DeveloperPreview.instance.characterVM)
     .environmentObject(NetworkMonitor())
+    .environmentObject(DeveloperPreview.instance.filterVM)
 }
 
 extension CharactersView {
@@ -75,6 +85,21 @@ extension CharactersView {
             if character == characterVM.allCharacters.last && character.id != 826 {
                 loadingIndicator
             }
+        }
+    }
+    
+    private var rowsFilterCharacters: some View {
+        ForEach(filterVM.filterCharacters) { character in
+            NavigationLink(value: character) {
+                CharacterRowView(character: character)
+                ///Pagination list
+                    .onAppear {
+                        if character.id == filterVM.filterCharacters.last?.id {
+                            filterVM.loadNextPage()
+                        }
+                    }
+            }
+            .padding(.bottom, -3)
         }
     }
 }

@@ -28,6 +28,7 @@
 		F1A21CE52C4AB0D300743ED0 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A21CE42C4AB0D300743ED0 /* FilterViewModel.swift */; };
 		F1D4BD712C4854CC00877C97 /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4BD702C4854CC00877C97 /* InfoModel.swift */; };
 		F1D4D7972C4A7A9000F3623F /* FilterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4D7962C4A7A9000F3623F /* FilterBarView.swift */; };
+		F1E4A72C2C4D7F3300821D7A /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E4A72B2C4D7F3300821D7A /* NavigationController.swift */; };
 		F1FA13C12C4AB4E700644061 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1FA13C02C4AB4E700644061 /* LaunchScreen.storyboard */; };
 		F1FA13C32C4AB9F200644061 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FA13C22C4AB9F200644061 /* NetworkErrorView.swift */; };
 		F1FA13C52C4ABD6C00644061 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FA13C42C4ABD6C00644061 /* NetworkMonitor.swift */; };
@@ -56,6 +57,7 @@
 		F1A21CE42C4AB0D300743ED0 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		F1D4BD702C4854CC00877C97 /* InfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
 		F1D4D7962C4A7A9000F3623F /* FilterBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBarView.swift; sourceTree = "<group>"; };
+		F1E4A72B2C4D7F3300821D7A /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		F1FA13C02C4AB4E700644061 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1FA13C22C4AB9F200644061 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
 		F1FA13C42C4ABD6C00644061 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				F16FE8212C480B09001F8770 /* Color.swift */,
+				F1E4A72B2C4D7F3300821D7A /* NavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				F16FE80B2C47C68A001F8770 /* RickAndMortyCharactersApp.swift in Sources */,
 				F1A21CE12C4A8AF300743ED0 /* FilterView.swift in Sources */,
 				F16FE8222C480B09001F8770 /* Color.swift in Sources */,
+				F1E4A72C2C4D7F3300821D7A /* NavigationController.swift in Sources */,
 				F1A21CE32C4AA43D00743ED0 /* NothingFoundView.swift in Sources */,
 				F10ABE852C48359700FF52DF /* CharacterViewModel.swift in Sources */,
 				F10ABE812C48269500FF52DF /* CharacterRowView.swift in Sources */,
@@ -411,6 +415,7 @@
 				DEVELOPMENT_TEAM = C53A58UGVG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Rick-and-Morty-Characters-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Рик и Морти";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -446,6 +451,7 @@
 				DEVELOPMENT_TEAM = C53A58UGVG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Rick-and-Morty-Characters-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Рик и Морти";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

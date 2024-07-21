@@ -12,6 +12,7 @@ struct RickAndMortyCharactersApp: App {
     
     @StateObject private var characterVM = CharacterViewModel()
     @StateObject private var networkMonitor = NetworkMonitor()
+    @StateObject private var filterMV = FilterViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -22,7 +23,7 @@ struct RickAndMortyCharactersApp: App {
             }
             .environmentObject(characterVM)
             .environmentObject(networkMonitor)
-            
+            .environmentObject(filterMV)
         }
     }
 }

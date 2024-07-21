@@ -16,39 +16,32 @@ struct DetailView: View {
     
     let character: CharacterModel
     
-    private let attributedSpecies = try! AttributedString(
-        markdown: "**Specise:**")
-    
     init(character: CharacterModel) {
         self.character = character
         _episodeVM = StateObject(wrappedValue: EpisodesViewModel(character: character))
     }
     
     var body: some View {
-        if networkMonitor.isConnected {
-            ScrollView {
+        ScrollView {
+            VStack {
                 VStack {
-                    VStack {
-                        image
-                        status
-                            .padding(.top, 5)
-                        info
-                            .padding(.top, 10)
-                    }
-                    .padding(15)
+                    image
+                    status
+                        .padding(.top, 5)
+                    info
+                        .padding(.top, 10)
                 }
-                .background(in: RoundedRectangle(cornerRadius: 25.0))
-                .backgroundStyle(Color.theme.rowBackground)
-                .padding([.leading, .trailing], 23)
+                .padding(15)
             }
-            .scrollBounceBehavior(.basedOnSize)
-            .scrollIndicators(.hidden)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
-            .toolbar { backButton; title }
-        } else {
-            NetworkErrorView()
+            .background(in: RoundedRectangle(cornerRadius: 25.0))
+            .backgroundStyle(Color.theme.rowBackground)
+            .padding([.leading, .trailing], 23)
         }
+        .scrollBounceBehavior(.basedOnSize)
+        .scrollIndicators(.hidden)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar { backButton; title }
     }
 }
 
@@ -89,8 +82,8 @@ extension DetailView {
     ///Character image
     private var image: some View {
         CharacterImageView(character: character)
-        .clipShape(RoundedRectangle(cornerRadius: 15))
-        .scaledToFit()
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .scaledToFit()
     }
     ///Character status information
     private var status: some View {
