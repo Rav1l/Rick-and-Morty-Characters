@@ -21,13 +21,15 @@ struct CharactersView: View {
                 LazyVStack {
                     if filterVM.searchText.isEmpty {
                         rowsAllCharacters
+                    } else if filterVM.error?.localizedDescription == NetworkingError.serverError.localizedDescription {
+                        NothingFoundView()
                     } else {
                         rowsFilterCharacters
                     }
                 }
             }
             .onChange(of: filterVM.searchText, { oldValue, newValue in
-                    filterVM.loadData()
+                filterVM.loadData()
             })
             .scrollBounceBehavior(.basedOnSize)
             .navigationBarTitleDisplayMode(.inline)
@@ -41,6 +43,7 @@ struct CharactersView: View {
         }
     }
 }
+
 
 #Preview {
     NavigationStack {

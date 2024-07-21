@@ -30,7 +30,7 @@ final class FilterViewModel: ObservableObject {
                   response.statusCode >= 200 && response.statusCode < 300 else { throw NetworkingError.serverError }
             
             guard let returnedResult = try? JSONDecoder().decode(Characters.self, from: data) else { throw NetworkingError.invalidData }
-            
+            self.error = nil
             self.pages = returnedResult.info.pages
             if returnedResult.info.pages >= 2  {
                 self.nextPage = 2
@@ -38,7 +38,6 @@ final class FilterViewModel: ObservableObject {
             self.filterCharacters = returnedResult.results
         } catch {
             self.error = error
-            
         }
     }
     
