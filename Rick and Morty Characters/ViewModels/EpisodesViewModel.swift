@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-//TODO: get Sinlgle episode fetch
+
 final class EpisodesViewModel: ObservableObject {
     
     @Published var episodes: [EpisodeModel] = []

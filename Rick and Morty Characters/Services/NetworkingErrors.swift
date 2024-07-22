@@ -18,9 +18,9 @@ enum NetworkingError: Error, LocalizedError {
         case .invalidURL:
             return "The URL was invaled. Please try again later."
         case .serverError:
-            return "There was an error with the server. Please ry again later."
+            return "There was an error with the server. Please try again later."
         case .invalidData:
-            return "The returned data is invalid. Please ry again later"
+            return "The returned data is invalid. Please try again later"
         case .unkown(let error):
             return error.localizedDescription
         }

@@ -10,7 +10,6 @@ import SwiftUI
 struct DetailView: View {
     
     @StateObject private var episodeVM: EpisodesViewModel
-    @EnvironmentObject private var networkMonitor: NetworkMonitor
     
     @Environment(\.dismiss) var dismiss
     
@@ -53,7 +52,9 @@ struct DetailView: View {
     .environmentObject(NetworkMonitor())
 }
 
+//MARK: Extensions
 extension DetailView {
+    
     ///NavigationStack  back button
     private var backButton: some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
@@ -71,6 +72,7 @@ extension DetailView {
             })
         }
     }
+    
     ///Titel of navigationStack
     private var title: some ToolbarContent {
         ToolbarItem(placement: .principal) {
@@ -79,12 +81,14 @@ extension DetailView {
                 .fontWeight(.bold)
         }
     }
+    
     ///Character image
     private var image: some View {
         CharacterImageView(character: character)
             .clipShape(RoundedRectangle(cornerRadius: 15))
             .scaledToFit()
     }
+    
     ///Character status information
     private var status: some View {
         VStack {
@@ -101,6 +105,7 @@ extension DetailView {
         .background(in: RoundedRectangle(cornerRadius: 15))
         .backgroundStyle(Color.theme.statusTextColor(character: character))
     }
+    
     ///Strign of episodes names
     private var episodesNames: String {
         var names = ""

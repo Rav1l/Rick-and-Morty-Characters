@@ -23,7 +23,7 @@
 		F1A203052C49CB87000BC34B /* CharacterImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A203042C49CB87000BC34B /* CharacterImageViewModel.swift */; };
 		F1A203072C49D37F000BC34B /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A203062C49D37F000BC34B /* CharacterImageView.swift */; };
 		F1A203092C49E900000BC34B /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A203082C49E8FF000BC34B /* EpisodesViewModel.swift */; };
-		F1A21CE12C4A8AF300743ED0 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A21CE02C4A8AF300743ED0 /* FilterView.swift */; };
+		F1A21CE12C4A8AF300743ED0 /* FilterSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A21CE02C4A8AF300743ED0 /* FilterSheetView.swift */; };
 		F1A21CE32C4AA43D00743ED0 /* NothingFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A21CE22C4AA43D00743ED0 /* NothingFoundView.swift */; };
 		F1A21CE52C4AB0D300743ED0 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A21CE42C4AB0D300743ED0 /* FilterViewModel.swift */; };
 		F1D4BD712C4854CC00877C97 /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4BD702C4854CC00877C97 /* InfoModel.swift */; };
@@ -52,7 +52,7 @@
 		F1A203042C49CB87000BC34B /* CharacterImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageViewModel.swift; sourceTree = "<group>"; };
 		F1A203062C49D37F000BC34B /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
 		F1A203082C49E8FF000BC34B /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
-		F1A21CE02C4A8AF300743ED0 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		F1A21CE02C4A8AF300743ED0 /* FilterSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetView.swift; sourceTree = "<group>"; };
 		F1A21CE22C4AA43D00743ED0 /* NothingFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NothingFoundView.swift; sourceTree = "<group>"; };
 		F1A21CE42C4AB0D300743ED0 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		F1D4BD702C4854CC00877C97 /* InfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 				F10ABE802C48269500FF52DF /* CharacterRowView.swift */,
 				F1A203062C49D37F000BC34B /* CharacterImageView.swift */,
 				F1D4D7962C4A7A9000F3623F /* FilterBarView.swift */,
-				F1A21CE02C4A8AF300743ED0 /* FilterView.swift */,
+				F1A21CE02C4A8AF300743ED0 /* FilterSheetView.swift */,
 				F1A21CE22C4AA43D00743ED0 /* NothingFoundView.swift */,
 				F1FA13C02C4AB4E700644061 /* LaunchScreen.storyboard */,
 			);
@@ -266,7 +266,7 @@
 				F1A203052C49CB87000BC34B /* CharacterImageViewModel.swift in Sources */,
 				F1A21CE52C4AB0D300743ED0 /* FilterViewModel.swift in Sources */,
 				F16FE80B2C47C68A001F8770 /* RickAndMortyCharactersApp.swift in Sources */,
-				F1A21CE12C4A8AF300743ED0 /* FilterView.swift in Sources */,
+				F1A21CE12C4A8AF300743ED0 /* FilterSheetView.swift in Sources */,
 				F16FE8222C480B09001F8770 /* Color.swift in Sources */,
 				F1E4A72C2C4D7F3300821D7A /* NavigationController.swift in Sources */,
 				F1A21CE32C4AA43D00743ED0 /* NothingFoundView.swift in Sources */,
@@ -409,6 +409,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rick and Morty Characters/Preview Content\"";
@@ -431,6 +432,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ravil.Rick-and-Morty-Characters";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -445,6 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rick and Morty Characters/Preview Content\"";
@@ -467,6 +470,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ravil.Rick-and-Morty-Characters";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;

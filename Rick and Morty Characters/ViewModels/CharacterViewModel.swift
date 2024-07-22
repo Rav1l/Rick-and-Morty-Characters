@@ -12,18 +12,21 @@ final class CharacterViewModel: ObservableObject {
     @Published var allCharacters: [CharacterModel] = []
     @Published var error: Error?
     
-    private let baseURL = "https://rickandmortyapi.com/api/character/?page="
+    private var url: String {
+        "https://rickandmortyapi.com/api/character/?page=\(currentPage)"
+    }
     private var currentPage = 1
     private var pages = 1
     
     init() {
         loadData()
     }
+    
     ///Download data about characters form API
     @MainActor
     private func fetchData() async throws {
         do {
-            guard let url = URL(string: baseURL + String(currentPage)),
+            guard let url = URL(string: "https://rickandmortyapi.com/api/character/?page=\(currentPage)"),
                   self.currentPage <= self.pages else { throw NetworkingError.invalidURL }
             
             let (data, response) = try await URLSession.shared.data(from: url)

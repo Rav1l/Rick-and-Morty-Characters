@@ -19,7 +19,7 @@ struct CharactersView: View {
             ScrollView {
                 FilterBarView(searchText: $filterVM.searchText)
                 LazyVStack {
-                    if filterVM.searchText.isEmpty {
+                    if filterVM.searchText.isEmpty && filterVM.gender.isEmpty && filterVM.status.isEmpty {
                         rowsAllCharacters
                     } else if filterVM.error?.localizedDescription == NetworkingError.serverError.localizedDescription {
                         NothingFoundView()
@@ -55,6 +55,7 @@ struct CharactersView: View {
     .environmentObject(DeveloperPreview.instance.filterVM)
 }
 
+//MARK: Extensions
 extension CharactersView {
     ///Titel of navigationStack
     private var titel: some ToolbarContent {
@@ -72,6 +73,7 @@ extension CharactersView {
             .padding(.top, 12)
     }
     
+    ///List of all characters
     private var rowsAllCharacters: some View {
         ForEach(characterVM.allCharacters) { character in
             NavigationLink(value: character) {
@@ -91,6 +93,7 @@ extension CharactersView {
         }
     }
     
+    ///List of filtered characters
     private var rowsFilterCharacters: some View {
         ForEach(filterVM.filterCharacters) { character in
             NavigationLink(value: character) {

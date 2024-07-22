@@ -30,7 +30,9 @@ struct CharacterRowView: View {
         .preferredColorScheme(.dark)
 }
 
+//MARK: Extensions
 extension CharacterRowView {
+    
     ///Async download and setting image
     private var image: some View {
         CharacterImageView(character: character)
@@ -39,6 +41,7 @@ extension CharacterRowView {
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .padding(.leading, 15)
     }
+    
     ///Information about character
     private var information: some View {
         VStack(alignment:.leading, spacing: 7) {

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+//Caching images
 final class CharacterImageViewModel: ObservableObject {
     
     @Published var image: UIImage? = nil
