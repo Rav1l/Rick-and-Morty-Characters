@@ -45,7 +45,7 @@ extension NothingFoundView {
     private var noFoundImage: some View {
         VStack {
             HStack {
-                Image("nothingFound")
+                Image("NothingFound")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 300)

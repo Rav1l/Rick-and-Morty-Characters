@@ -22,7 +22,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rickAndMortyBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Fmj-9f-7TU">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rickAndmortyBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Fmj-9f-7TU">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rickAndMortyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="CwY-2n-Xoh">
@@ -54,8 +54,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="rickAndMortyBackground" width="1179" height="2556"/>
         <image name="rickAndMortyLogo" width="885" height="271"/>
+        <image name="rickAndmortyBackground" width="1179" height="2556"/>
         <namedColor name="BackgroundColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
